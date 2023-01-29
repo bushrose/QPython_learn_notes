@@ -12,13 +12,15 @@ QPython是一个可以在安卓设备运行python的脚本引擎。版本有QPyt
 
 帮助文档：`https://www.bilibili.com/read/cv13322251`
 
-### 二、获取短信内容并生成词云
+## 二、获取短信内容并生成词云
 
 - **获取短信内容**
 获取短信将使用`SL4A` 的api，关于SL4A的介绍及文档，打开第一点gitee中相关链接，如下图：
 ![Screenshot_2023-01-29-19-35-29-899_mark](https://gitee.com/teisyogun/images/raw/master/Screenshot_2023-01-29-19-35-29-899_mark.jpg)
 话不多说，直接上代码：
+
 - **获取所有短信并存入csv**
+
 ```python
 import androidhelper
 import csv
@@ -50,7 +52,8 @@ def saveSMSToFile(save_path):
     return save_path
 ```
 
-- **利用就`jieba`分词及`pyecharts`生成词云**
+
+- **利用`jieba`分词及`pyecharts`生成词云**
 
 ```python
 
@@ -58,7 +61,7 @@ def saveSMSToFile(save_path):
 FILTER_WORDS = ['你', '我','他','我们', '他们', ',','验证码',':', '的','账号', 'cn', 'https', '0.00', '点击', '退订', '尊敬','客户', 'TD', '登录','http', '12582', '61.56', '0.42','u.10010', 'http', 'com']
 
 
-#获取关键词数量，用于词云展示时的数量  
+#获取关键词数量，用于词云展示时的数量，num可以修改，词云展示生成时的数量 
 def getKeyWordsCounts(filepath, num=30):  
     with open(filepath,'r') as f:  
         f_csv=csv.reader(f)  
@@ -106,17 +109,25 @@ def genWordCloud(csv_filepath,html_filepath, num=30): csv_filepath=saveSMSToFile
 
 ```
 
+
+
 - **传入文件地址及html地址**
+
 ```python
 csv_filepath='/storage/emulated/0/0/sms.csv'  
-    html_filepath='/storage/emulated/0/0/短信词云分析.html'  
-    genWordCloud(csv_filepath, html_filepath)  
+html_filepath='/storage/emulated/0/0/短信词云分析.html'  
+genWordCloud(csv_filepath, html_filepath)  
   
-    # 使用qpython自带的浏览器访问  
-    jsla('viewHtml', html_filepath)
+# 使用qpython自带的浏览器访问  
+jsla('viewHtml', html_filepath)
 ```
 
 最终实现效果如下图：
 ![Screenshot_2023-01-29-20-53-24-898_indi](https://gitee.com/teisyogun/images/raw/master/Screenshot_2023-01-29-20-53-24-898_indi.jpg)
 
-完整版代码，公众号发送【qpython词云】即可获得。
+完整版代码，点击底部阅读原文，回复【Qpython词云】
+
+## 三、总结
+文章采用Sl4A和QPython完成了短信词云生成。`SL4A`提供了丰富的api，如通过QPython结合scikit-learn监测并过滤删除垃圾短信等,这些都由大家自己去探索。
+
+[阅读原文](https://mp.weixin.qq.com/s?__biz=MzIxMTc5NDgzNw==&mid=2247483684&idx=1&sn=ba190cd70891a7bb79d588a9065d8a96&chksm=974eafdea03926c81f3a49c212e379d18e6c82c1fb942d4fc63f3bbd637bd1cad4406ceb4249#rd)
