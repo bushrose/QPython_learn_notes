@@ -39,16 +39,11 @@ def saveSMSToFile(save_path):
     status不知道是啥
     type，发信息还是收信息，1为收，2为发
     '''
-    headers=['_id', 'address', 'date', 'body', 'read', 'status', 'type']
-    
+    headers=['_id', 'address', 'date', 'body', 'read', 'status', 'type'] 
     with open(save_path,'w') as f:
-
         f_scv = csv.DictWriter(f, headers)
-
         f_scv.writeheader()
-
         f_scv.writerows(sms_data)
-
     return save_path
 ```
 
