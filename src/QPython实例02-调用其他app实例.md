@@ -10,10 +10,9 @@
 
 ## 二、代码实例
 ---
-
-> 执行以下方法前，请加上以下代码
-
+**注意**
 ```python
+# 执行以下方法前，请加上以下代码
 from androidhelper import Android
 droid=Android()
 ```
@@ -137,9 +136,10 @@ def dial(phone):
 
 ### 打开系统设置
 
-> ACTION_SETTINGS   android.settings.SETTINGS 
-> ACTION_BLUETOOTH_SETTINGS     android.settings.BLUETOOTH_SETTINGS
-> 修改成对应字符串即可
+```
+ACTION_SETTINGS   android.settings.SETTINGS 
+ACTION_BLUETOOTH_SETTINGS     android.settings.BLUETOOTH_SETTINGS
+修改成对应字符串即可
 字段列表:
 ACTION_SETTINGS 系统设置
 ACTION_APN_SETTINGS APN设置
@@ -164,6 +164,7 @@ ACTION_SYNC_SETTINGS 应用程序数据同步设置
 ACTION_NETWORK_OPERATOR_SETTINGS 可用网络搜索
 ACTION_DATA_ROAMING_SETTINGS 移动网络设置
 ACTION_INTERNAL_STORAGE_SETTINGS 手机存储设置
+```
 
 ```python
 def startSettings(action="android.settings.SETTINGS"):
